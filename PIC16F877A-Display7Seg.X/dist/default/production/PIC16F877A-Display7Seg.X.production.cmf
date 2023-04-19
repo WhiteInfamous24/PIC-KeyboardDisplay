@@ -12,8 +12,8 @@
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
 $build/default/production/Main.o
-RESET_VECT CODE 0 7DB 7DB 1 2 1
-INT_VECT CODE 0 7DC 7DC 24 2 1
+RESET_VECT CODE 0 7DD 7DD 1 2 1
+INT_VECT CODE 0 7DE 7DE 22 2 1
 config CONFIG 4 2007 2007 1 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -29,12 +29,12 @@ BANK0 20-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
-CONST 0-7DA 2
+CONST 0-7DC 2
 CONST 800-1FFF 2
-ENTRY 0-7DA 2
+ENTRY 0-7DC 2
 ENTRY 800-1FFF 2
 IDLOC 2000-2003 2
-CODE 0-7DA 2
+CODE 0-7DC 2
 CODE 800-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
@@ -42,9 +42,9 @@ SFR2 100-10F 1
 SFR3 180-18F 1
 COMMON 70-7F 1
 EEDATA 2100-21FF 2
-STRCODE 0-7DA 2
+STRCODE 0-7DC 2
 STRCODE 800-1FFF 2
-STRING 0-7DA 2
+STRING 0-7DC 2
 STRING 800-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
@@ -60,43 +60,41 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $build/default/production/Main.o
-7DC INT_VECT CODE >22:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7DD INT_VECT CODE >33:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7DE INT_VECT CODE >34:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7DF INT_VECT CODE >35:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E0 INT_VECT CODE >36:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E1 INT_VECT CODE >39:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E2 INT_VECT CODE >40:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E3 INT_VECT CODE >41:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E4 INT_VECT CODE >42:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E5 INT_VECT CODE >43:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E6 INT_VECT CODE >44:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E7 INT_VECT CODE >46:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E8 INT_VECT CODE >49:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7E9 INT_VECT CODE >50:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7EA INT_VECT CODE >51:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7EB INT_VECT CODE >52:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7EC INT_VECT CODE >53:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7ED INT_VECT CODE >54:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7EE INT_VECT CODE >55:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7EF INT_VECT CODE >56:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F0 INT_VECT CODE >57:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F1 INT_VECT CODE >58:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F2 INT_VECT CODE >59:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F3 INT_VECT CODE >62:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F4 INT_VECT CODE >63:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F5 INT_VECT CODE >65:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F6 INT_VECT CODE >66:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F7 INT_VECT CODE >68:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F8 INT_VECT CODE >69:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7F9 INT_VECT CODE >71:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FA INT_VECT CODE >72:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FB INT_VECT CODE >73:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FC INT_VECT CODE >74:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FD INT_VECT CODE >75:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FE INT_VECT CODE >76:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7FF INT_VECT CODE >77:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
-7DB RESET_VECT CODE >16:H:\My Drive\Documents\College\2023 - 1° semester\Electrónica Digital 2\Práctico\Ejercicios MPLAB\PIC16F877A-Display7Seg.X\Main.s
+7DE INT_VECT CODE >22:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7DF INT_VECT CODE >33:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E0 INT_VECT CODE >34:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E1 INT_VECT CODE >35:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E2 INT_VECT CODE >36:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E3 INT_VECT CODE >39:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E4 INT_VECT CODE >40:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E5 INT_VECT CODE >41:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E6 INT_VECT CODE >42:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E7 INT_VECT CODE >44:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E8 INT_VECT CODE >47:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7E9 INT_VECT CODE >48:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7EA INT_VECT CODE >49:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7EB INT_VECT CODE >50:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7EC INT_VECT CODE >51:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7ED INT_VECT CODE >52:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7EE INT_VECT CODE >53:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7EF INT_VECT CODE >54:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F0 INT_VECT CODE >55:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F1 INT_VECT CODE >56:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F2 INT_VECT CODE >57:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F3 INT_VECT CODE >60:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F4 INT_VECT CODE >61:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F5 INT_VECT CODE >63:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F6 INT_VECT CODE >64:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F7 INT_VECT CODE >66:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F8 INT_VECT CODE >67:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7F9 INT_VECT CODE >69:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FA INT_VECT CODE >70:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FB INT_VECT CODE >71:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FC INT_VECT CODE >72:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FD INT_VECT CODE >73:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FE INT_VECT CODE >74:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7FF INT_VECT CODE >75:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
+7DD RESET_VECT CODE >16:D:\Documents\GitHub\PIC16F877A-Display7Seg\PIC16F877A-Display7Seg.X\Main.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -146,8 +144,8 @@ __H__absolute__ 0 0 ABS 0 __absolute__ -
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-RESET_VECT 0 7DB FB6 1 2
-INT_VECT 0 7DC FB8 24 2
+RESET_VECT 0 7DD FBA 1 2
+INT_VECT 0 7DE FBC 22 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

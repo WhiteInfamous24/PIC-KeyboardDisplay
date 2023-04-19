@@ -1668,11 +1668,9 @@ setup:
   BCF STATUS, 5 ; clear bit 5 of STATUS vector, to select the memory bank 0 (00)
 
 main:
- MOVLW 0xFF
- MOVWF PORTB ; set lower nibble bits of TRISB vector, to put the selected pins in HIGH
- CALL delay
- MOVLW 0x00
- MOVWF PORTB ; clear all bits of TRISB vector, to put the selected pins in LOW
+ MOVLW 0x02 ; load in W_REG the value that i want to search in sevSegDeco
+ CALL sevSegDeco
+ MOVWF PORTB ; set the bits of PORTB vector with the values returned from the sevSegDeco
  CALL delay
 
  GOTO main
