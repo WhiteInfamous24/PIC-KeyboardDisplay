@@ -6,7 +6,7 @@ Linker command line:
   --edf=C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\dat\20230322214319_en.msgs \
   -cs -h+dist/default/production\PIC16F877A-Display7Seg.X.production.sym \
   --cmf=dist/default/production\PIC16F877A-Display7Seg.X.production.cmf -z \
-  -Q16F877A -oC:\Users\juanm\AppData\Local\Temp\xcAshek.\driver_tmp_3.o \
+  -Q16F877A -oC:\Users\juanm\AppData\Local\Temp\xcAsi74.\driver_tmp_3.o \
   --fixupoverflow=error -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
   -Mdist/default/production/PIC16F877A-Display7Seg.X.production.map -E1 \
   --acfsm=1493 -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
