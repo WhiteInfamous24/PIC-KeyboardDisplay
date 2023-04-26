@@ -1,1 +1,1 @@
-# PIC16F877A-Display7Seg
+# PIC-Display7Seg
