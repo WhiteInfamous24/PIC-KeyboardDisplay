@@ -1,6 +1,19 @@
 # 1 "Main.s"
 # 1 "<built-in>" 1
 # 1 "Main.s" 2
+# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\xc.inc" 1 3
+
+
+
+
+
+
+# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic.inc" 1 3
+
+
+
+# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic_as_chip_select.inc" 1 3
+# 663 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic_as_chip_select.inc" 3
 # 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\proc\\pic16f877a.inc" 1 3
 # 47 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\proc\\pic16f877a.inc" 3
 INDF equ 0000h
@@ -1571,20 +1584,17 @@ EECON1_EEPGD_MASK equ 0080h
 
 
 EECON2 equ 018Dh
-# 1 "Main.s" 2
-
-# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\xc.inc" 1 3
-
-
-
-
-
-
-# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic.inc" 1 3
-
-
-
-# 1 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic_as_chip_select.inc" 1 3
+# 1879 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\proc\\pic16f877a.inc" 3
+psect udata_shr,class=COMMON,space=1,noexec
+psect udata,class=RAM,space=1,noexec
+psect udata_bank0,class=BANK0,space=1,noexec
+psect udata_bank1,class=BANK1,space=1,noexec
+psect udata_bank2,class=BANK2,space=1,noexec
+psect udata_bank3,class=BANK3,space=1,noexec
+psect code,class=CODE,space=0,delta=2
+psect data,class=STRCODE,space=0,delta=2,noexec
+psect edata,class=EEDATA,space=3,delta=2,noexec
+# 664 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic_as_chip_select.inc" 2 3
 # 5 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\pic.inc" 2 3
 
 
@@ -1630,80 +1640,82 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 8 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\xc.inc" 2 3
-# 2 "Main.s" 2
+# 1 "Main.s" 2
 
 
 ; CONFIG
-CONFIG FOSC = HS ; Oscillator Selection bits (HS oscillator)
-CONFIG WDTE = OFF ; Watchdog Timer Enable bit (WDT disabled)
-CONFIG PWRTE = OFF ; Power-up Timer Enable bit (PWRT disabled)
-CONFIG BOREN = OFF ; Brown-out Reset Enable bit (BOR disabled)
-CONFIG LVP = OFF ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (((PORTB) and 07Fh), 3 is digital I/O, HV on MCLR must be used for programming)
-CONFIG CPD = OFF ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
-CONFIG WRT = OFF ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
-CONFIG CP = OFF ; Flash Program Memory Code Protection bit (Code protection off)
+  CONFIG FOSC = HS ; Oscillator Selection bits (HS oscillator)
+  CONFIG WDTE = OFF ; Watchdog Timer Enable bit (WDT disabled)
+  CONFIG PWRTE = OFF ; Power-up Timer Enable bit (PWRT disabled)
+  CONFIG BOREN = OFF ; Brown-out Reset Enable bit (BOR disabled)
+  CONFIG LVP = OFF ; Low-Voltage (Single-Supply) In-Circuit Serial Programming Enable bit (((PORTB) and 07Fh), 3 is digital I/O, HV on MCLR must be used for programming)
+  CONFIG CPD = OFF ; Data EEPROM Memory Code Protection bit (Data EEPROM code protection off)
+  CONFIG WRT = OFF ; Flash Program Memory Write Enable bits (Write protection off; all program memory may be written to by EECON control)
+  CONFIG CP = OFF ; Flash Program Memory Code Protection bit (Code protection off)
 
-psect RESET_VECT, class=CODE, delta=2 ; same as ORG, indicate the start position of the program
+; starting position of the program
+psect RESET_VECT, class=CODE, delta=2
 RESET_VECT:
- GOTO setup
+    GOTO setup
 
-psect INT_VECT, class=CODE, delta=2 ; indicate the memory location to go when a interrupt happens
+; memory location to go when a interrupt happens
+psect INT_VECT, class=CODE, delta=2
 INT_VECT:
- ; implement method interruption
 
- RETFIE
+    ; IMPLEMENT METHOD INTERRUPTION
+
+    RETFIE
 
 ; program variables
 W_REG EQU 0
 F_REG EQU 1
-
 CTER_0 EQU 0X20
 CTER_1 EQU 0X21
 CTER_2 EQU 0X22
 
 setup:
- BSF STATUS, 5 ; set bit 5 of STATUS vector, to select the memory bank 1 (01)
- MOVLW 0xFF
- MOVWF TRISB ; set lower nibble bits of TRISB vector, to put all the pin in output mode
-  BCF STATUS, 5 ; clear bit 5 of STATUS vector, to select the memory bank 0 (00)
+    BSF STATUS, 5 ; set bit 5 of STATUS vector, to select the memory bank 1 (01)
+    MOVLW 0xFF
+    MOVWF TRISB ; set lower nibble bits of TRISB vector, to put all the pin in output mode
+    BCF STATUS, 5 ; clear bit 5 of STATUS vector, to select the memory bank 0 (00)
 
 main:
- MOVLW 0x02 ; load in W_REG the value that i want to search in sevSegDeco
- CALL sevSegDeco
- MOVWF PORTB ; set the bits of PORTB vector with the values returned from the sevSegDeco
- CALL delay
+    MOVLW 0x02 ; load in W_REG the value that i want to search in sevSegDeco
+    CALL sevSegDeco
+    MOVWF PORTB ; set the bits of PORTB vector with the values returned from the sevSegDeco
+    CALL delay
 
- GOTO main
+    GOTO main
 
 sevSegDeco:
- ADDWF PCL, 1
- RETLW 0x00
- RETLW 0x01
- RETLW 0x02
- RETLW 0x03
- RETLW 0x04
- RETLW 0x05
- RETLW 0x06
- RETLW 0x07
- RETLW 0x08
- RETLW 0x09
+    ADDWF PCL, 1
+    RETLW 0x00
+    RETLW 0x01
+    RETLW 0x02
+    RETLW 0x03
+    RETLW 0x04
+    RETLW 0x05
+    RETLW 0x06
+    RETLW 0x07
+    RETLW 0x08
+    RETLW 0x09
 
 delay:
- MOVLW 0xFF
- MOVWF CTER_0
+    MOVLW 0xFF
+    MOVWF CTER_0
 loop_2:
- MOVLW 0xFF
- MOVWF CTER_1
+    MOVLW 0xFF
+    MOVWF CTER_1
 loop_1:
- MOVLW 0xFF
- MOVWF CTER_2
+    MOVLW 0xFF
+    MOVWF CTER_2
 loop_0:
- DECFSZ CTER_2
- GOTO loop_0
- DECFSZ CTER_1
- GOTO loop_1
- DECFSZ CTER_0
- GOTO loop_2
- RETURN
+    DECFSZ CTER_2
+    GOTO loop_0
+    DECFSZ CTER_1
+    GOTO loop_1
+    DECFSZ CTER_0
+    GOTO loop_2
+    RETURN
 
 END RESET_VECT
