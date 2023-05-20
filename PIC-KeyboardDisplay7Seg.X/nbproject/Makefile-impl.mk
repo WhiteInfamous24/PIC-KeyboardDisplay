@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=PIC-Display7Seg.X
+PROJECTNAME=PIC-KeyboardDisplay7Seg.X
 
 # Active Configuration
 DEFAULTCONF=default

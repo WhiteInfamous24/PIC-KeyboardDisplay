@@ -3,7 +3,7 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>PIC-Display7Seg</name>
+            <name>PIC-KeyboardDisplay7Seg</name>
             <creation-uuid>7b7b8686-c45e-449e-8428-4ddb832fe0cc</creation-uuid>
             <make-project-type>0</make-project-type>
             <sourceEncoding>ISO-8859-1</sourceEncoding>
