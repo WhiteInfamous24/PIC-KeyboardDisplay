@@ -2478,12 +2478,13 @@ INT_VECT:
     SWAPF STATUS, W
     MOVWF STATUS_TMP
 
-    ; keypad routine
-    CALL getKeypad
-    BANKSEL PORTB
-    MOVLW 0b00000000 ; put pins ((PORTB) and 07Fh), 4 to ((PORTB) and 07Fh), 7 in /HIGH
-    MOVWF PORTB
-    BCF INTCON, 1 ; clear ((INTCON) and 07Fh), 1 flag
+    ; keyboard interruption
+    BTFSC INTCON, 0 ; check ((INTCON) and 07Fh), 0 bit
+    CALL keyboardISR
+
+    ; TMR0 interruption
+    BTFSC INTCON, 2 ; check ((INTCON) and 07Fh), 2 bit
+    CALL TMR0ISR
 
     ; return previous context
     SWAPF STATUS_TMP, W
@@ -2496,154 +2497,270 @@ INT_VECT:
 ; program variables
 W_TMP EQU 0x20
 STATUS_TMP EQU 0x21
-KYPD_BTN EQU 0x22
-KYPD_FND_F EQU 0x23
+TMR0_CNTR EQU 0x22
+
+KYBRD_BTN EQU 0x23
+KYBRD_FND_F EQU 0x24
+
+DSPLY EQU 0x25
 
 ; program setup
 setup:
 
-    ; PORTC configuration
-    BANKSEL TRISC
-    MOVLW 0b00000000 ; set PORTC pins as output
-    MOVWF TRISC
-
     ; PORTB configuration
     BANKSEL TRISB
-    MOVLW 0b00001111 ; set 4 outputs and 4 inputs to control 8x8 keyboard in PORTB
+    MOVLW 0b00001111 ; set <((PORTB) and 07Fh), 0:((PORTB) and 07Fh), 3> PORTB pins as inputs to control keyboard -rows-
     MOVWF TRISB
     BANKSEL ANSELH
-    CLRF ANSELH ; set PORTB as digital inputs
+    CLRF ANSELH ; set PORTB as digital
+
+    ; PORTC configuration
+    BANKSEL TRISC
+    MOVLW 0b00000000 ; set <((PORTC) and 07Fh), 0:((PORTC) and 07Fh), 7> PORTC pins as outputs to control LEDs
+    MOVWF TRISC
+
+    ; PORTD configuration
+    BANKSEL TRISD
+    MOVLW 0b00000000 ; set <((PORTD) and 07Fh), 4:((PORTD) and 07Fh), 7> PORTD pins as outputs to control keyboard -columns-
+    MOVWF TRISD
 
     ; general port configuration
-    BANKSEL OPTION_REG ; enable global pull-ups
-    MOVLW 0b00000000 ; | /RBPU | ((OPTION_REG) and 07Fh), 6 | ((OPTION_REG) and 07Fh), 5 | ((OPTION_REG) and 07Fh), 4 | ((OPTION_REG) and 07Fh), 3 | ((OPTION_REG) and 07Fh), 2 | ((OPTION_REG) and 07Fh), 1 | ((OPTION_REG) and 07Fh), 0 |
+    BANKSEL OPTION_REG ; enable global pull-ups and set pre-scaler
+    MOVLW 0b00000111 ; | /RBPU | ((OPTION_REG) and 07Fh), 6 | ((OPTION_REG) and 07Fh), 5 | ((OPTION_REG) and 07Fh), 4 | ((OPTION_REG) and 07Fh), 3 | ((OPTION_REG) and 07Fh), 2 | ((OPTION_REG) and 07Fh), 1 | ((OPTION_REG) and 07Fh), 0 |
     MOVWF OPTION_REG
     BANKSEL WPUB
-    MOVLW 0b00001111 ; enable ((PORTB) and 07Fh), 0 to ((PORTB) and 07Fh), 3 pull-ups
+    MOVLW 0b00001111 ; enable pull-ups in <((PORTB) and 07Fh), 0:((PORTB) and 07Fh), 3> pins
     MOVWF WPUB
 
     ; interruption configuration
     BANKSEL INTCON ; enable global interruptions and interruptions in PORTB
-    MOVLW 0b10010000 ; | ((INTCON) and 07Fh), 7 | ((INTCON) and 07Fh), 6 | ((INTCON) and 07Fh), 5 | ((INTCON) and 07Fh), 4 | ((INTCON) and 07Fh), 3 | ((INTCON) and 07Fh), 2 | ((INTCON) and 07Fh), 1 | ((INTCON) and 07Fh), 0 |
+    MOVLW 0b10111000 ; | ((INTCON) and 07Fh), 7 | ((INTCON) and 07Fh), 6 | ((INTCON) and 07Fh), 5 | ((INTCON) and 07Fh), 4 | ((INTCON) and 07Fh), 3 | ((INTCON) and 07Fh), 2 | ((INTCON) and 07Fh), 1 | ((INTCON) and 07Fh), 0 |
     MOVWF INTCON
     BANKSEL IOCB
-    MOVLW 0b00001111 ; enable interruptions in pins ((PORTB) and 07Fh), 0 to ((PORTB) and 07Fh), 3
+    MOVLW 0b00001111 ; enable interruptions in <((PORTB) and 07Fh), 0:((PORTB) and 07Fh), 3> pins
     MOVWF IOCB
+
+    ; TMR0 initialization
+    BANKSEL TMR0
+    CLRF TMR0
+
+    ; PORTB initialization
+    BANKSEL PORTB
+    MOVLW 0b00000000
+    MOVWF PORTB
 
     ; PORTC initialization
     BANKSEL PORTC
     MOVLW 0b00000000
     MOVWF PORTC
 
-    ; PORTB initialization
-    BANKSEL PORTB
-    MOVLW 0b00000000 ; put pins ((PORTB) and 07Fh), 4 to ((PORTB) and 07Fh), 7 in /HIGH
-    MOVWF PORTB
+    ; PORTD initialization
+    BANKSEL PORTD
+    MOVLW 0b00000000
+    MOVWF PORTD
 
     ; variables initialization
-    CLRF KYPD_BTN
-    CLRF KYPD_FND_F
+    CLRF TMR0_CNTR
+    CLRF KYBRD_BTN
+    CLRF KYBRD_FND_F
+    CLRF DSPLY
 
 ; main program loop
 main:
 
-    ; show last pressed button
-    CALL showButton
+    ; show pressed button
+    CALL display
 
     GOTO main
 
-; show the pressed button subroutine
-showButton:
-    BANKSEL PORTC
-    MOVF KYPD_BTN, W
-    MOVWF PORTC
-
+; interruption subroutine to control TMR0
+TMR0ISR:
+    BANKSEL TMR0
+    CLRF TMR0 ; reset TMR0
+    INCF TMR0_CNTR ; increment TMR0 counter variable
+    CALL blinkRD0
+    BCF STATUS, 0 ; clear ((STATUS) and 07Fh), 0 bit
+    BCF INTCON, 2 ; clear ((INTCON) and 07Fh), 2 bit
     RETURN
 
-; get pressed button in keypad subroutine
-getKeypad:
-    CLRF KYPD_FND_F
-    BANKSEL PORTB
+; blink LED
+blinkRD0:
+    BANKSEL PORTD
+    BTFSS PORTD, 0
+    GOTO setRD0_HIGH
+    GOTO setRD0_LOW
 
-    BSF PORTB, 7
-    BSF PORTB, 6
-    BSF PORTB, 5
-    BCF PORTB, 4
-    MOVLW 0b00010000
-    MOVWF KYPD_BTN
-    CALL getRow
-    BTFSC KYPD_FND_F, 0
+    ; turn on LED
+    setRD0_HIGH:
+ BSF PORTD, 0
+ RETURN
 
-    RETURN
+    ; turn off LED
+    setRD0_LOW:
+ BCF PORTD, 0
+ RETURN
 
-    BSF PORTB, 7
-    BSF PORTB, 6
-    BCF PORTB, 5
-    BSF PORTB, 4
-    MOVLW 0b00100000
-    MOVWF KYPD_BTN
-    CALL getRow
-    BTFSC KYPD_FND_F, 0
+; interruption subroutine to get pressed button in keyboard
+keyboardISR:
 
-    RETURN
+    ; select memory bank 0 <00>
+    BCF STATUS, 5 ; clear ((STATUS) and 07Fh), 5 bit
+    BCF STATUS, 6 ; clear ((STATUS) and 07Fh), 6 bit
 
-    BSF PORTB, 7
-    BCF PORTB, 6
-    BSF PORTB, 5
-    BSF PORTB, 4
-    MOVLW 0b01000000
-    MOVWF KYPD_BTN
-    CALL getRow
-    BTFSC KYPD_FND_F, 0
+    ; clear previous pressed button and found flag
+    CLRF KYBRD_BTN
+    CLRF KYBRD_FND_F
 
-    RETURN
+    ; search in column 0
+    BCF PORTD, 4 ; active only column 0
+    BSF PORTD, 5
+    BSF PORTD, 6
+    BSF PORTD, 7
+    MOVLW 0b00000001 ; save current column
+    MOVWF KYBRD_BTN
+    CALL searchInRow ; find if the row is found with the current column
+    BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
+    GOTO returnFromKeyboard
 
-    BCF PORTB, 7
-    BSF PORTB, 6
-    BSF PORTB, 5
-    BSF PORTB, 4
-    MOVLW 0b10000000
-    MOVWF KYPD_BTN
-    CALL getRow
-    BTFSC KYPD_FND_F, 0
+    ; search in column 1
+    BSF PORTD, 4
+    BCF PORTD, 5 ; active only column 1
+    BSF PORTD, 6
+    BSF PORTD, 7
+    MOVLW 0b00000010 ; save current column
+    MOVWF KYBRD_BTN
+    CALL searchInRow ; find if the row is found with the current column
+    BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
+    GOTO returnFromKeyboard
 
-    RETURN
+    ; search in column 2
+    BSF PORTD, 4
+    BSF PORTD, 5
+    BCF PORTD, 6 ; active only column 2
+    BSF PORTD, 7
+    MOVLW 0b00000100 ; save current column
+    MOVWF KYBRD_BTN
+    CALL searchInRow ; find if the row is found with the current column
+    BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
+    GOTO returnFromKeyboard
 
-; get row of pressed button subroutine
-getRow:
-    BTFSC PORTB, 0
+    ; search in column 3
+    BSF PORTD, 4
+    BSF PORTD, 5
+    BSF PORTD, 6
+    BCF PORTD, 7 ; active only column 3
+    MOVLW 0b00001000 ; save current column
+    MOVWF KYBRD_BTN
+    CALL searchInRow ; find if the row is found with the current column
+    BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set, return
+    GOTO returnFromKeyboard
+
+    ; case if there is no match
+    CLRF KYBRD_BTN
+
+    ; return from getKeyboard subroutine
+    returnFromKeyboard:
+ CLRF PORTD
+ BCF INTCON, 1 ; clear ((INTCON) and 07Fh), 1 bit
+ BCF INTCON, 0 ; clear ((INTCON) and 07Fh), 0 bit
+ RETURN
+
+; subroutine to find if there are any set bits in the row
+searchInRow:
+    BTFSS PORTB, 0
     GOTO setRow_0
-    BTFSC PORTB, 1
+    BTFSS PORTB, 1
     GOTO setRow_1
-    BTFSC PORTB, 2
+    BTFSS PORTB, 2
     GOTO setRow_2
-    BTFSC PORTB, 3
+    BTFSS PORTB, 3
     GOTO setRow_3
+    RETURN
+    setRow_0:
+ BSF KYBRD_BTN, 4
+ BSF KYBRD_FND_F, 0
+ RETURN
+    setRow_1:
+ BSF KYBRD_BTN, 5
+ BSF KYBRD_FND_F, 0
+ RETURN
+    setRow_2:
+ BSF KYBRD_BTN, 6
+ BSF KYBRD_FND_F, 0
+ RETURN
+    setRow_3:
+ BSF KYBRD_BTN, 7
+ BSF KYBRD_FND_F, 0
+ RETURN
 
+; subroutine to show the pressed button in display
+display:
+    BANKSEL PORTC
+    MOVF KYBRD_BTN, W
+    CALL keyboardToValueConverter
+    MOVWF PORTC
     RETURN
 
-setRow_0:
-    BSF KYPD_BTN, 0
-    BSF KYPD_FND_F, 0
+; subroutine to convert a value in W by performing additions based on bit positions
+keyboardToValueConverter:
 
-    RETURN
+    ; select memory bank 0 <00>
+    BCF STATUS, 5 ; clear ((STATUS) and 07Fh), 5 bit
+    BCF STATUS, 6 ; clear ((STATUS) and 07Fh), 6 bit
 
-setRow_1:
-    BSF KYPD_BTN, 1
-    BSF KYPD_FND_F, 0
+    ; clear W
+    CLRW
 
-    RETURN
+    ; add bit 7 (accumulator + 0)
+    BTFSS KYBRD_BTN, 7
+    GOTO addBit_6
+    ADDLW 0x00 ; value to add
 
-setRow_2:
-    BSF KYPD_BTN, 2
-    BSF KYPD_FND_F, 0
+    ; add bit 6 (accumulator + 1)
+    addBit_6:
+ BTFSS KYBRD_BTN, 6
+ GOTO addBit_5
+ ADDLW 0x01 ; value to add
 
-    RETURN
+    ; add bit 5 (accumulator + 2)
+    addBit_5:
+ BTFSS KYBRD_BTN, 5
+ GOTO addBit_4
+ ADDLW 0x02 ; value to add
 
-setRow_3:
-    BSF KYPD_BTN, 3
-    BSF KYPD_FND_F, 0
+    ; add bit 4 (accumulator + 3)
+    addBit_4:
+ BTFSS KYBRD_BTN, 4
+ GOTO addBit_3
+ ADDLW 0x03 ; value to add
 
-    RETURN
+    ; add bit 3 (accumulator + 0)
+    addBit_3:
+ BTFSS KYBRD_BTN, 3
+ GOTO addBit_2
+ ADDLW 0x00 ; value to add
+
+    ; add bit 2 (accumulator + 4)
+    addBit_2:
+ BTFSS KYBRD_BTN, 2
+ GOTO addBit_1
+ ADDLW 0x04 ; value to add
+
+    ; add bit 1 (accumulator + 8)
+    addBit_1:
+ BTFSS KYBRD_BTN, 1
+ GOTO addBit_0
+ ADDLW 0x08 ; value to add
+
+    ; add bit 0 (accumulator + 12)
+    addBit_0:
+ BTFSS KYBRD_BTN, 0
+ GOTO addNULL
+ ADDLW 0x0C ; value to add
+
+    ; add null
+    addNULL:
+ MOVWF DSPLY
+ RETURN
 
 END RESET_VECT

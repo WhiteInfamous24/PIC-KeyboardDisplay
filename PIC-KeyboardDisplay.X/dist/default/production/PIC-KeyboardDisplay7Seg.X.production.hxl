@@ -1,24 +1,24 @@
 ### HEXMate logfile and output summary ###
 
 ### Command-line arguments ###
- C:\Users\juanm\AppData\Local\Temp\xcAsb2k.\driver_tmp_3.o
- -Odist/default/production\PIC-Display7Seg.X.production.hex
- -logfile=dist/default/production\PIC-Display7Seg.X.production.hxl
+ C:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o
+ -Odist/default/production\PIC-KeyboardDisplay7Seg.X.production.hex
+ -logfile=dist/default/production\PIC-KeyboardDisplay7Seg.X.production.hxl
  -addressing=2
 
 ### Memory Usage ###
  Input file ranges:
-  0h - 1h		(C:\Users\juanm\AppData\Local\Temp\xcAsb2k.\driver_tmp_3.o)
-  8h - F3h		(C:\Users\juanm\AppData\Local\Temp\xcAsb2k.\driver_tmp_3.o)
-  400Eh - 4011h		(C:\Users\juanm\AppData\Local\Temp\xcAsb2k.\driver_tmp_3.o)
+  0h - 1h		(C:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o)
+  8h - 173h		(C:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o)
+  400Eh - 4011h		(C:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o)
  Unused ranges:
   2h - 7h
-  F4h - 400Dh
+  174h - 400Dh
 
 ### Hex Memory Map ###
  Legend:
   -- = Unused memory
-  H1 = Input file             (C:\Users\juanm\AppData\Local\Temp\xcAsb2k.\driver_tmp_3.o)
+  H1 = Input file             (C:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o)
 ----------------------------------------------------------
          | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
 ----------------------------------------------------------
@@ -37,7 +37,15 @@
 000000C0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000000D0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
 000000E0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
-000000F0 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+000000F0 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000100 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000110 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000120 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000130 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000140 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000150 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000160 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1
+00000170 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
 ----------------------------------------------------------
 00004000 | -- -- -- -- -- -- -- -- -- -- -- -- -- -- H1 H1
 00004010 | H1 H1 -- -- -- -- -- -- -- -- -- -- -- -- -- --
