@@ -2579,7 +2579,6 @@ TMR0ISR:
     CLRF TMR0 ; reset TMR0
     INCF TMR0_CNTR ; increment TMR0 counter variable
     CALL blinkRD0
-    BCF STATUS, 0 ; clear ((STATUS) and 07Fh), 0 bit
     BCF INTCON, 2 ; clear ((INTCON) and 07Fh), 2 bit
     RETURN
 
@@ -2587,16 +2586,16 @@ TMR0ISR:
 blinkRD0:
     BANKSEL PORTD
     BTFSS PORTD, 0
-    GOTO setRD0_HIGH
-    GOTO setRD0_LOW
+    GOTO setRD0
+    GOTO clearRD0
 
     ; turn on LED
-    setRD0_HIGH:
+    setRD0:
  BSF PORTD, 0
  RETURN
 
     ; turn off LED
-    setRD0_LOW:
+    clearRD0:
  BCF PORTD, 0
  RETURN
 

@@ -4,12 +4,12 @@ Linker command line:
 
 -W-3 \
   --edf=C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\pic\dat\20230322214319_en.msgs \
-  -cs -h+dist/default/production\PIC-KeyboardDisplay7Seg.X.production.sym \
-  --cmf=dist/default/production\PIC-KeyboardDisplay7Seg.X.production.cmf -z \
-  -Q16F887 -oC:\Users\juanm\AppData\Local\Temp\xcAsfrc.\driver_tmp_3.o \
+  -cs -h+dist/default/production\PIC-KeyboardDisplay.X.production.sym \
+  --cmf=dist/default/production\PIC-KeyboardDisplay.X.production.cmf -z \
+  -Q16F887 -oC:\Users\juanm\AppData\Local\Temp\xcAsfr0.\driver_tmp_3.o \
   -pRESET_VECT=0h -pINT_VECT=4h --fixupoverflow=error \
   -ver=XC8 PIC(R) Assembler --fixupoverflow=lstwarn \
-  -Mdist/default/production/PIC-KeyboardDisplay7Seg.X.production.map -E1 \
+  -Mdist/default/production/PIC-KeyboardDisplay.X.production.map -E1 \
   --acfsm=1493 -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
   -ACONST=00h-0FFhx32 -AENTRY=00h-0FFhx32 -ACOMMON=070h-07Fh \
   -ABANK0=020h-06Fh -ABANK1=0A0h-0EFh -ABANK2=0110h-016Fh \
@@ -29,12 +29,12 @@ Machine type is 16F887
                 Name                               Link     Load   Length Selector   Space Scale
 build/default/production/Main.o
                 config                             2007     2007        2        0       4
-                INT_VECT                              4        4       B6        8       0
+                INT_VECT                              4        4       B5        8       0
                 RESET_VECT                            0        0        1        0       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CODE           
-                INT_VECT                              4        4       B6         0
+                INT_VECT                              4        4       B5         0
                 RESET_VECT                            0        0        1         0
 
         CLASS   STRCODE        
@@ -79,7 +79,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 RESET_VECT                     000000  000001  000001         0       0  CODE        2
-                INT_VECT                       000004  0000B6  0000BA         8       0  CODE        2
+                INT_VECT                       000004  0000B5  0000B9         8       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -90,13 +90,13 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0001-0003              3           2
-                         00BA-1FFF            800
+                         00B9-1FFF            800
         COMMON           0070-007F             10           1
         CONST            0001-0003              3           2
-                         00BA-1FFF            100
+                         00B9-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0001-0003              3           2
-                         00BA-1FFF            100
+                         00B9-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0020-006F             50           1
                          00A0-00EF             50
@@ -105,28 +105,28 @@ UNUSED ADDRESS RANGES
         SFR0             0002-0007              6           1
         SFR3             0180-018F             10           1
         STRCODE          0001-0003              3           2
-                         00BA-1FFF           1F46
+                         00B9-1FFF           1F47
         STRING           0001-0003              3           2
-                         00BA-1FFF            100
+                         00B9-1FFF            100
 
                                   Symbol Table
 
-__HINT_VECT     INT_VECT     00BA  __HRESET_VECT   RESET_VECT   0001
-__H__absolute__ __absolute__ 0000  __Hcode         code         0174
-__Hconfig       config       2009  __Hdata         data         0174
-__Hedata        edata        0174  __Hspace_0      (abs)        0174
+__HINT_VECT     INT_VECT     00B9  __HRESET_VECT   RESET_VECT   0001
+__H__absolute__ __absolute__ 0000  __Hcode         code         0172
+__Hconfig       config       2009  __Hdata         data         0172
+__Hedata        edata        0172  __Hspace_0      (abs)        0172
 __Hspace_1      (abs)        0000  __Hspace_3      (abs)        0000
-__Hspace_4      (abs)        4010  __Hudata        udata        0174
-__Hudata_bank0  udata_bank0  0174  __Hudata_bank1  udata_bank1  0174
-__Hudata_bank2  udata_bank2  0174  __Hudata_bank3  udata_bank3  0174
-__Hudata_shr    udata_shr    0174  __LINT_VECT     INT_VECT     0004
+__Hspace_4      (abs)        4010  __Hudata        udata        0172
+__Hudata_bank0  udata_bank0  0172  __Hudata_bank1  udata_bank1  0172
+__Hudata_bank2  udata_bank2  0172  __Hudata_bank3  udata_bank3  0172
+__Hudata_shr    udata_shr    0172  __LINT_VECT     INT_VECT     0004
 __LRESET_VECT   RESET_VECT   0000  __L__absolute__ __absolute__ 0000
-__Lcode         code         0174  __Lconfig       config       0000
-__Ldata         data         0174  __Ledata        edata        0174
+__Lcode         code         0172  __Lconfig       config       0000
+__Ldata         data         0172  __Ledata        edata        0172
 __Lspace_0      (abs)        0000  __Lspace_1      (abs)        0000
 __Lspace_3      (abs)        0000  __Lspace_4      (abs)        0000
-__Ludata        udata        0174  __Ludata_bank0  udata_bank0  0174
-__Ludata_bank1  udata_bank1  0174  __Ludata_bank2  udata_bank2  0174
-__Ludata_bank3  udata_bank3  0174  __Ludata_shr    udata_shr    0174
+__Ludata        udata        0172  __Ludata_bank0  udata_bank0  0172
+__Ludata_bank1  udata_bank1  0172  __Ludata_bank2  udata_bank2  0172
+__Ludata_bank3  udata_bank3  0172  __Ludata_shr    udata_shr    0172
 __S0            (abs)        0000  __S1            (abs)        0000
 __S3            (abs)        0000  
