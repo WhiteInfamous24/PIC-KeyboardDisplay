@@ -2491,7 +2491,6 @@ INT_VECT:
     MOVWF STATUS
     SWAPF W_TMP, F
     SWAPF W_TMP, W
-
     RETFIE
 
 ; program variables
@@ -2499,9 +2498,11 @@ W_TMP EQU 0x20
 STATUS_TMP EQU 0x21
 TMR0_CNTR EQU 0x22
 
+; keyboard
 KYBRD_BTN EQU 0x23
 KYBRD_FND_F EQU 0x24
 
+; display
 DSPLY EQU 0x25
 
 ; program setup
@@ -2619,7 +2620,7 @@ keyboardISR:
     MOVWF KYBRD_BTN
     CALL searchInRow ; find if the row is found with the current column
     BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
-    GOTO returnFromKeyboard
+    GOTO returnKeyboardISR
 
     ; search in column 1
     BSF PORTD, 4
@@ -2630,7 +2631,7 @@ keyboardISR:
     MOVWF KYBRD_BTN
     CALL searchInRow ; find if the row is found with the current column
     BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
-    GOTO returnFromKeyboard
+    GOTO returnKeyboardISR
 
     ; search in column 2
     BSF PORTD, 4
@@ -2641,7 +2642,7 @@ keyboardISR:
     MOVWF KYBRD_BTN
     CALL searchInRow ; find if the row is found with the current column
     BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set return
-    GOTO returnFromKeyboard
+    GOTO returnKeyboardISR
 
     ; search in column 3
     BSF PORTD, 4
@@ -2652,13 +2653,13 @@ keyboardISR:
     MOVWF KYBRD_BTN
     CALL searchInRow ; find if the row is found with the current column
     BTFSC KYBRD_FND_F, 0 ; if the keyboard found flag is set, return
-    GOTO returnFromKeyboard
+    GOTO returnKeyboardISR
 
     ; case if there is no match
     CLRF KYBRD_BTN
 
     ; return from getKeyboard subroutine
-    returnFromKeyboard:
+    returnKeyboardISR:
  CLRF PORTD
  BCF INTCON, 1 ; clear ((INTCON) and 07Fh), 1 bit
  BCF INTCON, 0 ; clear ((INTCON) and 07Fh), 0 bit
