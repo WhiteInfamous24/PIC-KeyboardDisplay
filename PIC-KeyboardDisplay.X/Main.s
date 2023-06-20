@@ -187,8 +187,8 @@ keyboardISR:
     
     ; return from getKeyboard subroutine
     CLRF    PORTD
-    BCF	    INTCON, 1	; clear INTF bit
-    BCF	    INTCON, 0	; clear RBIF bit
+    BCF	    INTCON, 1		; clear INTF bit
+    BCF	    INTCON, 0		; clear RBIF bit
     RETURN
     
 ; subroutine to find if there are any set bits in the row
