@@ -13,7 +13,7 @@
 %PSECTS
 $build/default/production/Main.o
 RESET_VECT CODE 0 0 0 1 2 1
-INT_VECT CODE 0 4 4 A8 2 1
+INT_VECT CODE 0 4 4 A3 2 1
 config CONFIG 4 2007 2007 2 2 1
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -30,20 +30,20 @@ BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 1-3 2
-CONST AC-1FFF 2
+CONST A7-1FFF 2
 ENTRY 1-3 2
-ENTRY AC-1FFF 2
+ENTRY A7-1FFF 2
 IDLOC 2000-2003 2
 CODE 1-3 2
-CODE AC-1FFF 2
+CODE A7-1FFF 2
 SFR0 2-7 1
 SFR3 180-18F 1
 COMMON 70-7F 1
 EEDATA 2100-21FF 2
 STRCODE 1-3 2
-STRCODE AC-1FFF 2
+STRCODE A7-1FFF 2
 STRING 1-3 2
-STRING AC-1FFF 2
+STRING A7-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -77,143 +77,138 @@ F INT_VECT CODE >46:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 16 INT_VECT CODE >67:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 17 INT_VECT CODE >70:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 19 INT_VECT CODE >71:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-1A INT_VECT CODE >72:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-1B INT_VECT CODE >75:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-1D INT_VECT CODE >76:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-1E INT_VECT CODE >77:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-1F INT_VECT CODE >80:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+1A INT_VECT CODE >74:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+1C INT_VECT CODE >75:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+1D INT_VECT CODE >78:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+1F INT_VECT CODE >79:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+20 INT_VECT CODE >80:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 21 INT_VECT CODE >81:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-22 INT_VECT CODE >82:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-23 INT_VECT CODE >83:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-25 INT_VECT CODE >84:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-26 INT_VECT CODE >85:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-27 INT_VECT CODE >88:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+23 INT_VECT CODE >82:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+24 INT_VECT CODE >83:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+25 INT_VECT CODE >86:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+27 INT_VECT CODE >87:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+28 INT_VECT CODE >88:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 29 INT_VECT CODE >89:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-2A INT_VECT CODE >90:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-2B INT_VECT CODE >91:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-2D INT_VECT CODE >92:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-2E INT_VECT CODE >93:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-2F INT_VECT CODE >96:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-31 INT_VECT CODE >97:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-32 INT_VECT CODE >100:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-34 INT_VECT CODE >101:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-35 INT_VECT CODE >102:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-36 INT_VECT CODE >105:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-38 INT_VECT CODE >106:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-39 INT_VECT CODE >107:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-3A INT_VECT CODE >110:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-3C INT_VECT CODE >111:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-3D INT_VECT CODE >112:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-3E INT_VECT CODE >115:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-3F INT_VECT CODE >116:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-40 INT_VECT CODE >117:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-41 INT_VECT CODE >123:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-42 INT_VECT CODE >125:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-43 INT_VECT CODE >129:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-44 INT_VECT CODE >130:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-45 INT_VECT CODE >131:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-46 INT_VECT CODE >132:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-47 INT_VECT CODE >133:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-48 INT_VECT CODE >139:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+2B INT_VECT CODE >90:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+2C INT_VECT CODE >91:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+2D INT_VECT CODE >94:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+2F INT_VECT CODE >95:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+30 INT_VECT CODE >98:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+32 INT_VECT CODE >99:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+33 INT_VECT CODE >102:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+35 INT_VECT CODE >103:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+36 INT_VECT CODE >106:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+38 INT_VECT CODE >107:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+39 INT_VECT CODE >110:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3A INT_VECT CODE >111:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3B INT_VECT CODE >112:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3C INT_VECT CODE >118:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3D INT_VECT CODE >120:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3E INT_VECT CODE >124:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+3F INT_VECT CODE >125:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+40 INT_VECT CODE >126:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+41 INT_VECT CODE >127:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+42 INT_VECT CODE >128:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+43 INT_VECT CODE >134:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+44 INT_VECT CODE >137:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+45 INT_VECT CODE >138:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+46 INT_VECT CODE >139:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+47 INT_VECT CODE >140:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+48 INT_VECT CODE >141:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 49 INT_VECT CODE >142:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 4A INT_VECT CODE >143:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 4B INT_VECT CODE >144:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 4C INT_VECT CODE >145:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-4D INT_VECT CODE >146:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-4E INT_VECT CODE >147:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-4F INT_VECT CODE >148:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-50 INT_VECT CODE >149:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-51 INT_VECT CODE >150:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+4D INT_VECT CODE >148:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+4E INT_VECT CODE >149:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+4F INT_VECT CODE >150:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+50 INT_VECT CODE >151:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+51 INT_VECT CODE >152:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 52 INT_VECT CODE >153:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 53 INT_VECT CODE >154:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 54 INT_VECT CODE >155:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 55 INT_VECT CODE >156:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-56 INT_VECT CODE >157:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-57 INT_VECT CODE >158:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-58 INT_VECT CODE >159:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-59 INT_VECT CODE >160:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-5A INT_VECT CODE >161:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+56 INT_VECT CODE >159:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+57 INT_VECT CODE >160:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+58 INT_VECT CODE >161:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+59 INT_VECT CODE >162:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+5A INT_VECT CODE >163:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 5B INT_VECT CODE >164:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 5C INT_VECT CODE >165:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 5D INT_VECT CODE >166:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 5E INT_VECT CODE >167:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-5F INT_VECT CODE >168:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-60 INT_VECT CODE >169:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-61 INT_VECT CODE >170:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-62 INT_VECT CODE >171:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-63 INT_VECT CODE >172:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+5F INT_VECT CODE >170:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+60 INT_VECT CODE >171:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+61 INT_VECT CODE >172:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+62 INT_VECT CODE >173:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+63 INT_VECT CODE >174:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 64 INT_VECT CODE >175:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 65 INT_VECT CODE >176:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 66 INT_VECT CODE >177:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 67 INT_VECT CODE >178:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-68 INT_VECT CODE >179:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-69 INT_VECT CODE >180:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6A INT_VECT CODE >181:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6B INT_VECT CODE >182:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6C INT_VECT CODE >183:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6D INT_VECT CODE >186:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6E INT_VECT CODE >189:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-6F INT_VECT CODE >190:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-70 INT_VECT CODE >191:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-71 INT_VECT CODE >192:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+68 INT_VECT CODE >181:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+69 INT_VECT CODE >184:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6A INT_VECT CODE >185:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6B INT_VECT CODE >186:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6C INT_VECT CODE >187:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6D INT_VECT CODE >191:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6E INT_VECT CODE >192:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+6F INT_VECT CODE >193:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+70 INT_VECT CODE >194:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+71 INT_VECT CODE >195:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 72 INT_VECT CODE >196:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 73 INT_VECT CODE >197:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 74 INT_VECT CODE >198:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 75 INT_VECT CODE >199:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-76 INT_VECT CODE >200:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-77 INT_VECT CODE >201:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-78 INT_VECT CODE >202:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-79 INT_VECT CODE >203:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7A INT_VECT CODE >204:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7B INT_VECT CODE >207:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7C INT_VECT CODE >208:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7D INT_VECT CODE >209:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7E INT_VECT CODE >212:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-7F INT_VECT CODE >213:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-80 INT_VECT CODE >214:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-81 INT_VECT CODE >217:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-82 INT_VECT CODE >218:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-83 INT_VECT CODE >219:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-84 INT_VECT CODE >222:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-85 INT_VECT CODE >223:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-86 INT_VECT CODE >224:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-87 INT_VECT CODE >228:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-88 INT_VECT CODE >229:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-89 INT_VECT CODE >230:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8A INT_VECT CODE >231:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8B INT_VECT CODE >237:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8C INT_VECT CODE >240:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8D INT_VECT CODE >241:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8E INT_VECT CODE >242:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-8F INT_VECT CODE >245:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-90 INT_VECT CODE >246:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-91 INT_VECT CODE >247:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-92 INT_VECT CODE >250:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-93 INT_VECT CODE >251:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-94 INT_VECT CODE >252:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-95 INT_VECT CODE >255:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-96 INT_VECT CODE >256:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-97 INT_VECT CODE >257:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-98 INT_VECT CODE >260:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-99 INT_VECT CODE >261:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9A INT_VECT CODE >262:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9B INT_VECT CODE >265:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9C INT_VECT CODE >266:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9D INT_VECT CODE >267:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9E INT_VECT CODE >270:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-9F INT_VECT CODE >271:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A0 INT_VECT CODE >272:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A1 INT_VECT CODE >275:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A2 INT_VECT CODE >276:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A3 INT_VECT CODE >277:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A4 INT_VECT CODE >280:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A5 INT_VECT CODE >284:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A6 INT_VECT CODE >285:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A7 INT_VECT CODE >286:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A8 INT_VECT CODE >289:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-A9 INT_VECT CODE >290:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-AA INT_VECT CODE >293:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
-AB INT_VECT CODE >294:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+76 INT_VECT CODE >202:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+77 INT_VECT CODE >203:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+78 INT_VECT CODE >204:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+79 INT_VECT CODE >207:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7A INT_VECT CODE >208:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7B INT_VECT CODE >209:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7C INT_VECT CODE >212:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7D INT_VECT CODE >213:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7E INT_VECT CODE >214:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+7F INT_VECT CODE >217:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+80 INT_VECT CODE >218:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+81 INT_VECT CODE >219:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+82 INT_VECT CODE >223:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+83 INT_VECT CODE >224:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+84 INT_VECT CODE >225:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+85 INT_VECT CODE >226:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+86 INT_VECT CODE >232:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+87 INT_VECT CODE >235:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+88 INT_VECT CODE >236:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+89 INT_VECT CODE >237:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8A INT_VECT CODE >240:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8B INT_VECT CODE >241:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8C INT_VECT CODE >242:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8D INT_VECT CODE >245:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8E INT_VECT CODE >246:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+8F INT_VECT CODE >247:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+90 INT_VECT CODE >250:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+91 INT_VECT CODE >251:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+92 INT_VECT CODE >252:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+93 INT_VECT CODE >255:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+94 INT_VECT CODE >256:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+95 INT_VECT CODE >257:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+96 INT_VECT CODE >260:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+97 INT_VECT CODE >261:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+98 INT_VECT CODE >262:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+99 INT_VECT CODE >265:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9A INT_VECT CODE >266:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9B INT_VECT CODE >267:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9C INT_VECT CODE >270:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9D INT_VECT CODE >271:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9E INT_VECT CODE >272:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+9F INT_VECT CODE >275:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A0 INT_VECT CODE >279:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A1 INT_VECT CODE >280:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A2 INT_VECT CODE >281:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A3 INT_VECT CODE >284:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A4 INT_VECT CODE >285:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A5 INT_VECT CODE >288:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
+A6 INT_VECT CODE >289:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 0 RESET_VECT CODE >22:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
@@ -227,28 +222,28 @@ AB INT_VECT CODE >294:F:\PIC-KeyboardDisplay\PIC-KeyboardDisplay.X\Main.s
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
-__Hspace_0 158 0 ABS 0 - -
+__Hspace_0 14E 0 ABS 0 - -
 __Hspace_1 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
-__Hudata_bank0 158 0 ABS 0 udata_bank0 -
-__Hudata_bank1 158 0 ABS 0 udata_bank1 -
-__Hudata_bank2 158 0 ABS 0 udata_bank2 -
-__Hudata_bank3 158 0 ABS 0 udata_bank3 -
+__Hudata_bank0 14E 0 ABS 0 udata_bank0 -
+__Hudata_bank1 14E 0 ABS 0 udata_bank1 -
+__Hudata_bank2 14E 0 ABS 0 udata_bank2 -
+__Hudata_bank3 14E 0 ABS 0 udata_bank3 -
 __L__absolute__ 0 0 ABS 0 __absolute__ -
 __LINT_VECT 8 0 CODE 0 INT_VECT -
-__HINT_VECT 158 0 CODE 0 INT_VECT -
+__HINT_VECT 14E 0 CODE 0 INT_VECT -
 __HRESET_VECT 2 0 CODE 0 RESET_VECT -
-__Hedata 158 0 ABS 0 edata -
-__Hudata 158 0 ABS 0 udata -
+__Hedata 14E 0 ABS 0 edata -
+__Hudata 14E 0 ABS 0 udata -
 __Hconfig 4012 0 CONFIG 4 config -
-__Ledata 158 0 ABS 0 edata -
-__Ludata 158 0 ABS 0 udata -
-__Hcode 158 0 ABS 0 code -
-__Hdata 158 0 ABS 0 data -
+__Ledata 14E 0 ABS 0 edata -
+__Ludata 14E 0 ABS 0 udata -
+__Hcode 14E 0 ABS 0 code -
+__Hdata 14E 0 ABS 0 data -
 __LRESET_VECT 0 0 CODE 0 RESET_VECT -
-__Lcode 158 0 ABS 0 code -
-__Ldata 158 0 ABS 0 data -
+__Lcode 14E 0 ABS 0 code -
+__Ldata 14E 0 ABS 0 data -
 __S0 0 0 ABS 0 - -
 __S1 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
@@ -257,13 +252,13 @@ __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
-__Ludata_bank0 158 0 ABS 0 udata_bank0 -
-__Ludata_bank1 158 0 ABS 0 udata_bank1 -
-__Ludata_bank2 158 0 ABS 0 udata_bank2 -
-__Ludata_bank3 158 0 ABS 0 udata_bank3 -
+__Ludata_bank0 14E 0 ABS 0 udata_bank0 -
+__Ludata_bank1 14E 0 ABS 0 udata_bank1 -
+__Ludata_bank2 14E 0 ABS 0 udata_bank2 -
+__Ludata_bank3 14E 0 ABS 0 udata_bank3 -
 __H__absolute__ 0 0 ABS 0 __absolute__ -
-__Hudata_shr 158 0 ABS 0 udata_shr -
-__Ludata_shr 158 0 ABS 0 udata_shr -
+__Hudata_shr 14E 0 ABS 0 udata_shr -
+__Ludata_shr 14E 0 ABS 0 udata_shr -
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -289,7 +284,7 @@ __Ludata_shr 158 0 ABS 0 udata_shr -
 # All other numeric quantities are in decimal.
 %SEGMENTS
 RESET_VECT 0 0 0 1 2
-INT_VECT 0 4 8 A8 2
+INT_VECT 0 4 8 A3 2
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal

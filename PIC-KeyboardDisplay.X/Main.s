@@ -68,13 +68,11 @@ setup:
     
     ; PORTC configuration
     BANKSEL TRISC
-    MOVLW   0b00000000		; set <RC0:RC7> PORTC pins as outputs to control LEDs
-    MOVWF   TRISC
+    CLRF    TRISC		; set <RC0:RC7> PORTC pins as outputs to control LEDs
     
     ; PORTD configuration
     BANKSEL TRISD
-    MOVLW   0b00000000		; set <RD4:RD7> PORTD pins as outputs to control keyboard -columns-
-    MOVWF   TRISD
+    CLRF    TRISD		; set <RD4:RD7> PORTD pins as outputs to control keyboard -columns-
     
     ; general port configuration
     BANKSEL OPTION_REG		; enable global pull-ups and set pre-scaler
@@ -89,7 +87,7 @@ setup:
     MOVLW   0b10111000		; | GIE | PEIE | T0IE | INTE | RBIE | T0IF | INTF | RBIF |
     MOVWF   INTCON
     BANKSEL IOCB
-    MOVLW   0b00001111		; enable interruptions in <RB0:RB3> pins
+    MOVLW   0b00001111		; enable interrupt-on-change in <RB0:RB3> pins
     MOVWF   IOCB
     
     ; TMR0 initialization
@@ -98,18 +96,15 @@ setup:
     
     ; PORTB initialization
     BANKSEL PORTB
-    MOVLW   0b00000000
-    MOVWF   PORTB
+    CLRF    PORTB
     
     ; PORTC initialization
     BANKSEL PORTC
-    MOVLW   0b00000000
-    MOVWF   PORTC
+    CLRF    PORTC
     
     ; PORTD initialization
     BANKSEL PORTD
-    MOVLW   0b00000000
-    MOVWF   PORTD
+    CLRF    PORTD
     
     ; variables initialization
     CLRF    TMR0_CNTR
