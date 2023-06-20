@@ -48,14 +48,13 @@ INT_VECT:
 ; program variables
 W_TMP	    EQU 0x20
 STATUS_TMP  EQU	0x21
-TMR0_CNTR   EQU	0x22
+
+; timer 0
+TMR0_CNTR   EQU	0x28
 
 ; keyboard
-KYBRD_BTN   EQU	0x23
-KYBRD_FND_F EQU	0x24
-
-; display
-DSPLY	    EQU	0x25
+KYBRD_BTN   EQU	0x30
+KYBRD_FND_F EQU	0x31
 
 ; program setup
 setup:
@@ -116,7 +115,6 @@ setup:
     CLRF    TMR0_CNTR
     CLRF    KYBRD_BTN
     CLRF    KYBRD_FND_F
-    CLRF    DSPLY
 
 ; main program loop
 main:
@@ -128,39 +126,16 @@ main:
     
 ; interruption subroutine to control TMR0
 TMR0ISR:
-    BANKSEL TMR0
     CLRF    TMR0		; reset TMR0
     INCF    TMR0_CNTR		; increment TMR0 counter variable
-    CALL    blinkRD0
+    CALL    blinkLED
     BCF	    INTCON, 2		; clear T0IF bit
     RETURN
-
-; blink LED
-blinkRD0:
-    BANKSEL PORTD
-    BTFSS   PORTD, 0
-    GOTO    setRD0
-    GOTO    clearRD0
-    
-    ; turn on LED
-    setRD0:
-	BSF	    PORTD, 0
-	RETURN
-
-    ; turn off LED
-    clearRD0:
-	BCF	    PORTD, 0
-	RETURN
 
 ; interruption subroutine to get pressed button in keyboard
 keyboardISR:
     
-    ; select memory bank 0 <00>
-    BCF	    STATUS, 5		; clear RP0 bit
-    BCF	    STATUS, 6		; clear RP1 bit
-    
-    ; clear previous pressed button and found flag
-    CLRF    KYBRD_BTN
+    ; clear previous found flag
     CLRF    KYBRD_FND_F
     
     ; search in column 0
@@ -172,7 +147,7 @@ keyboardISR:
     MOVWF   KYBRD_BTN
     CALL    searchInRow		; find if the row is found with the current column
     BTFSC   KYBRD_FND_F, 0	; if the keyboard found flag is set return
-    GOTO    returnKeyboardISR
+    GOTO    $+29
     
     ; search in column 1
     BSF	    PORTD, 4
@@ -183,7 +158,7 @@ keyboardISR:
     MOVWF   KYBRD_BTN
     CALL    searchInRow		; find if the row is found with the current column
     BTFSC   KYBRD_FND_F, 0	; if the keyboard found flag is set return
-    GOTO    returnKeyboardISR
+    GOTO    $+20
     
     ; search in column 2
     BSF	    PORTD, 4
@@ -194,7 +169,7 @@ keyboardISR:
     MOVWF   KYBRD_BTN
     CALL    searchInRow		; find if the row is found with the current column
     BTFSC   KYBRD_FND_F, 0	; if the keyboard found flag is set return
-    GOTO    returnKeyboardISR
+    GOTO    $+11
     
     ; search in column 3
     BSF	    PORTD, 4
@@ -205,114 +180,117 @@ keyboardISR:
     MOVWF   KYBRD_BTN
     CALL    searchInRow		; find if the row is found with the current column
     BTFSC   KYBRD_FND_F, 0	; if the keyboard found flag is set, return
-    GOTO    returnKeyboardISR
+    GOTO    $+2
     
     ; case if there is no match
     CLRF    KYBRD_BTN
     
     ; return from getKeyboard subroutine
-    returnKeyboardISR:
-	CLRF	PORTD
-	BCF	INTCON, 1	; clear INTF bit
-	BCF	INTCON, 0	; clear RBIF bit
-	RETURN
+    CLRF    PORTD
+    BCF	    INTCON, 1	; clear INTF bit
+    BCF	    INTCON, 0	; clear RBIF bit
+    RETURN
     
 ; subroutine to find if there are any set bits in the row
 searchInRow:
     BTFSS   PORTB, 0
-    GOTO    setRow_0
+    GOTO    $+8
     BTFSS   PORTB, 1
-    GOTO    setRow_1
+    GOTO    $+9
     BTFSS   PORTB, 2
-    GOTO    setRow_2
+    GOTO    $+10
     BTFSS   PORTB, 3
-    GOTO    setRow_3
+    GOTO    $+11
     RETURN
-    setRow_0:
-	BSF	KYBRD_BTN, 4
-	BSF	KYBRD_FND_F, 0
-	RETURN
-    setRow_1:
-	BSF	KYBRD_BTN, 5
-	BSF	KYBRD_FND_F, 0
-	RETURN
-    setRow_2:
-	BSF	KYBRD_BTN, 6
-	BSF	KYBRD_FND_F, 0
-	RETURN
-    setRow_3:
-	BSF	KYBRD_BTN, 7
-	BSF	KYBRD_FND_F, 0
-	RETURN
+    
+    ; set row 0
+    BSF	    KYBRD_BTN, 4
+    BSF	    KYBRD_FND_F, 0
+    RETURN
+    
+    ; set row 1
+    BSF	    KYBRD_BTN, 5
+    BSF	    KYBRD_FND_F, 0
+    RETURN
+    
+    ; set row 2
+    BSF	    KYBRD_BTN, 6
+    BSF	    KYBRD_FND_F, 0
+    RETURN
+    
+    ; set row 3
+    BSF	    KYBRD_BTN, 7
+    BSF	    KYBRD_FND_F, 0
+    RETURN
     
 ; subroutine to show the pressed button in display
 display:
-    BANKSEL PORTC
     MOVF    KYBRD_BTN, W
-    CALL    keyboardToValueConverter
+    CALL    kybrdToHexConv
     MOVWF   PORTC
     RETURN
     
 ; subroutine to convert a value in W by performing additions based on bit positions
-keyboardToValueConverter:
-    
-    ; select memory bank 0 <00>
-    BCF	    STATUS, 5		; clear RP0 bit
-    BCF	    STATUS, 6		; clear RP1 bit
+kybrdToHexConv:
     
     ; clear W
     CLRW
     
     ; add bit 7 (accumulator + 0)
     BTFSS   KYBRD_BTN, 7
-    GOTO    addBit_6
-    ADDLW   0x00		; value to add
+    GOTO    $+2
+    ADDLW   0x00
     
     ; add bit 6 (accumulator + 1)
-    addBit_6:
-	BTFSS   KYBRD_BTN, 6
-	GOTO    addBit_5
-	ADDLW   0x01		; value to add
+    BTFSS   KYBRD_BTN, 6
+    GOTO    $+2
+    ADDLW   0x01
 
     ; add bit 5 (accumulator + 2)
-    addBit_5:
-	BTFSS   KYBRD_BTN, 5
-	GOTO    addBit_4
-	ADDLW   0x02		; value to add
+    BTFSS   KYBRD_BTN, 5
+    GOTO    $+2
+    ADDLW   0x02
 	
     ; add bit 4 (accumulator + 3)
-    addBit_4:
-	BTFSS   KYBRD_BTN, 4
-	GOTO    addBit_3
-	ADDLW   0x03		; value to add
+    BTFSS   KYBRD_BTN, 4
+    GOTO    $+2
+    ADDLW   0x03
 	
     ; add bit 3 (accumulator + 0)
-    addBit_3:
-	BTFSS   KYBRD_BTN, 3
-	GOTO    addBit_2
-	ADDLW   0x00		; value to add
+    BTFSS   KYBRD_BTN, 3
+    GOTO    $+2
+    ADDLW   0x00
 	
     ; add bit 2 (accumulator + 4)
-    addBit_2:
-	BTFSS   KYBRD_BTN, 2
-	GOTO    addBit_1
-	ADDLW   0x04		; value to add
+    BTFSS   KYBRD_BTN, 2
+    GOTO    $+2
+    ADDLW   0x04
 	
     ; add bit 1 (accumulator + 8)
-    addBit_1:
-	BTFSS   KYBRD_BTN, 1
-	GOTO    addBit_0
-	ADDLW   0x08		; value to add
+    BTFSS   KYBRD_BTN, 1
+    GOTO    $+2
+    ADDLW   0x08
 	
     ; add bit 0 (accumulator + 12)
-    addBit_0:
-	BTFSS   KYBRD_BTN, 0
-	GOTO    addNULL
-	ADDLW   0x0C		; value to add
+    BTFSS   KYBRD_BTN, 0
+    GOTO    $+2
+    ADDLW   0x0C
 
     ; add null
-    addNULL:
-	MOVWF	DSPLY
-	RETURN
+    RETURN
+    
+; blink LED
+blinkLED:
+    BTFSS   PORTD, 0
+    GOTO    $+2
+    GOTO    $+3
+    
+    ; turn on LED
+    BSF	    PORTD, 0
+    RETURN
+
+    ; turn off LED
+    BCF	    PORTD, 0
+    RETURN
 	
 END RESET_VECT
