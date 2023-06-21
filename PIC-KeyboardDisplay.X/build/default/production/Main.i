@@ -2445,7 +2445,8 @@ stk_offset SET 0
 auto_size SET 0
 ENDM
 # 8 "C:/Users/juanm/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.4.149/xc8\\pic\\include\\xc.inc" 2 3
-# 2 "Main.s" 2
+# 1 "Main.s" 2
+
 
 ; CONFIG1
   CONFIG FOSC = XT ; Oscillator Selection bits (XT oscillator: Crystal/resonator on ((PORTA) and 07Fh), 6/OSC2/CLKOUT and ((PORTA) and 07Fh), 7/OSC1/CLKIN)
@@ -2719,6 +2720,7 @@ kybrdToHexConv:
     ADDLW 0x0C
 
     ; add null
+    MOVWF KYBRD_BTN
     RETURN
 
 ; blink LED

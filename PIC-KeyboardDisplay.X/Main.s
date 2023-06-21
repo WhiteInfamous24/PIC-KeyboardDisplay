@@ -272,6 +272,7 @@ kybrdToHexConv:
     ADDLW   0x0C
 
     ; add null
+    MOVWF   KYBRD_BTN
     RETURN
     
 ; blink LED
